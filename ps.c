@@ -24,21 +24,7 @@ double det_2(double *a){
     return ans;
 }
 
-void print_mat(double *a){
-    for(int i = 0; i < 3; i++){
-        printf("%f ", a[i]);
-    }
-    printf("\n");
-}
 
-void print_3m(double b[][3]){
-    for(int i = 0; i < n_anchor-1; i++){
-        for(int j = 0; j < 3; j++){
-            printf("%f ", b[i][j]);
-        }
-        printf("\n");
-    }
-}
 
 double err(coordinate a, coordinate b){
     double ans = sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2) + pow(a.z - b.z, 2));
@@ -81,19 +67,7 @@ int main(){
         b[i] = pow(dis[0], 2) - pow(dis[i+1], 2) -  k[0] + k[i+1];
     }
     // calculate AT
-    /*
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            if(i == j){
-                AT[i][j] = A[i][j];
-            }
-            else{
-                AT[i][j] = A[j][i];
-            }
-        }
-    }
-    */
-
+   
     for(int i = 0; i < n_anchor - 1; i++){
         for(int j = 0; j < 3; j++){
             AT[j][i] = A[i][j];
@@ -170,7 +144,7 @@ int main(){
     printf("%f %f %f\n", tag.x, tag.y, tag.z);
     coordinate calculate = {cal[0], cal[1], cal[2]};
     printf("%f %f %f\n", tag.x-calculate.x, tag.y-calculate.y, tag.z-calculate.z);
-    printf("error = %f\n", err(calculate, tag));
+    //printf("error = %f\n", err(calculate, tag));
     
     return 0;
 }
